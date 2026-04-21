@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Agentic AI Engineer Roadmap</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0e0e10;
+    --bg2: #18181c;
+    --bg3: #222228;
+    --border: rgba(255,255,255,0.08);
+    --border2: rgba(255,255,255,0.14);
+    --t1: #f0f0f0;
+    --t2: #a0a0b0;
+    --t3: #606070;
+    --accent: #7c6ef0;
+    --accent2: #a594f7;
+    --accent-bg: rgba(124,110,240,0.12);
+    --green: #3ecf8e;
+    --green-bg: rgba(62,207,142,0.1);
+    --amber: #f5a623;
+    --amber-bg: rgba(245,166,35,0.1);
+    --coral: #f07060;
+    --coral-bg: rgba(240,112,96,0.1);
+    --blue: #60a8f0;
+    --blue-bg: rgba(96,168,240,0.1);
+    --teal: #40c8b0;
+    --teal-bg: rgba(64,200,176,0.1);
+    --pink: #e070c0;
+    --pink-bg: rgba(224,112,192,0.1);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--t1);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 100vh;
+  }
+
+  /* ── HERO ── */
+  .hero {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 64px 24px 48px;
+    position: relative;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 600px; height: 300px;
+    background: radial-gradient(ellipse at center top, rgba(124,110,240,0.18) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .eyebrow {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .eyebrow::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, var(--accent), transparent);
+    max-width: 120px;
+  }
+
+  .hero h1 {
+    font-family: 'Space Mono', monospace;
+    font-size: clamp(28px, 5vw, 44px);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--t1);
+    margin-bottom: 20px;
+    letter-spacing: -0.02em;
+  }
+
+  .hero h1 span {
+    color: var(--accent2);
+  }
+
+  .hero p {
+    font-size: 16px;
+    color: var(--t2);
+    max-width: 520px;
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+
+  .hero-stats {
+    display: flex;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .stat {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .stat-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--t1);
+  }
+
+  .stat-label {
+    font-size: 12px;
+    color: var(--t3);
+    letter-spacing: 0.04em;
+  }
+
+  /* ── STAGE COLORS ── */
+  .stage-colors {
+    --c1: var(--blue);   --c1bg: var(--blue-bg);
+    --c2: var(--accent2); --c2bg: var(--accent-bg);
+    --c3: var(--green);  --c3bg: var(--green-bg);
+    --c4: var(--accent2); --c4bg: var(--accent-bg);
+    --c5: var(--amber);  --c5bg: var(--amber-bg);
+    --c6: var(--teal);   --c6bg: var(--teal-bg);
+    --c7: var(--coral);  --c7bg: var(--coral-bg);
+    --c8: var(--blue);   --c8bg: var(--blue-bg);
+    --c9: var(--pink);   --c9bg: var(--pink-bg);
+    --c10: var(--green); --c10bg: var(--green-bg);
+    --c11: var(--coral); --c11bg: var(--coral-bg);
+  }
+
+  /* ── MAIN CONTENT ── */
+  .content {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 24px 80px;
+  }
+
+  /* ── STAGE ── */
+  .stage {
+    margin-bottom: 10px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+    background: var(--bg2);
+  }
+
+  .stage:hover {
+    border-color: var(--border2);
+  }
+
+  .stage.open {
+    border-color: var(--border2);
+  }
+
+  .stage-head {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 18px 22px;
+    cursor: pointer;
+    user-select: none;
+    transition: background 0.15s;
+  }
+
+  .stage-head:hover {
+    background: rgba(255,255,255,0.03);
+  }
+
+  .num-wrap {
+    flex-shrink: 0;
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .stage-num {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+  }
+
+  .stage-info { flex: 1; }
+
+  .stage-title {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--t1);
+    line-height: 1.3;
+  }
+
+  .stage-subtitle {
+    font-size: 12px;
+    color: var(--t3);
+    margin-top: 2px;
+  }
+
+  .arrow {
+    font-size: 10px;
+    color: var(--t3);
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
+  }
+
+  .stage.open .arrow { transform: rotate(90deg); }
+
+  /* ── BODY ── */
+  .stage-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+
+  .stage-body-inner {
+    padding: 0 22px 22px;
+    border-top: 1px solid var(--border);
+  }
+
+  .stage-desc {
+    font-size: 13px;
+    color: var(--t2);
+    line-height: 1.65;
+    padding: 16px 0 14px;
+  }
+
+  .items { display: flex; flex-direction: column; gap: 10px; }
+
+  .item {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 14px 16px;
+    background: var(--bg3);
+    transition: border-color 0.15s, background 0.15s;
+  }
+
+  .item:hover {
+    border-color: var(--border2);
+    background: rgba(255,255,255,0.03);
+  }
+
+  .item-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--t1);
+    margin-bottom: 5px;
+  }
+
+  .item-desc {
+    font-size: 12px;
+    color: var(--t2);
+    line-height: 1.6;
+  }
+
+  .item-desc code {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    background: rgba(255,255,255,0.07);
+    padding: 1px 5px;
+    border-radius: 4px;
+    color: var(--accent2);
+  }
+
+  .item-desc br { display: block; content: ''; margin-top: 8px; }
+
+  /* ── TIP ── */
+  .tip {
+    margin-top: 14px;
+    padding: 13px 16px;
+    border-left: 2px solid var(--accent);
+    background: var(--accent-bg);
+    border-radius: 0 10px 10px 0;
+  }
+
+  .tip-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 5px;
+  }
+
+  .tip-text {
+    font-size: 12px;
+    color: var(--t2);
+    line-height: 1.65;
+  }
+
+  /* ── FINAL CALLOUT ── */
+  .final-callout {
+    margin-top: 32px;
+    padding: 28px 28px;
+    border: 1px solid rgba(124,110,240,0.3);
+    border-radius: 16px;
+    background: linear-gradient(135deg, rgba(124,110,240,0.08) 0%, rgba(62,207,142,0.05) 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .final-callout::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 200px; height: 200px;
+    background: radial-gradient(circle, rgba(124,110,240,0.12) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .final-callout h3 {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent2);
+    margin-bottom: 10px;
+  }
+
+  .final-callout p {
+    font-size: 14px;
+    color: var(--t2);
+    line-height: 1.7;
+  }
+
+  /* ── STAGE-SPECIFIC COLORS ── */
+  .s1 .num-wrap { background: var(--blue-bg); }
+  .s1 .stage-num { color: var(--blue); }
+  .s2 .num-wrap { background: var(--accent-bg); }
+  .s2 .stage-num { color: var(--accent2); }
+  .s3 .num-wrap { background: var(--green-bg); }
+  .s3 .stage-num { color: var(--green); }
+  .s4 .num-wrap { background: var(--accent-bg); }
+  .s4 .stage-num { color: var(--accent2); }
+  .s5 .num-wrap { background: var(--amber-bg); }
+  .s5 .stage-num { color: var(--amber); }
+  .s6 .num-wrap { background: var(--teal-bg); }
+  .s6 .stage-num { color: var(--teal); }
+  .s7 .num-wrap { background: var(--coral-bg); }
+  .s7 .stage-num { color: var(--coral); }
+  .s8 .num-wrap { background: var(--blue-bg); }
+  .s8 .stage-num { color: var(--blue); }
+  .s9 .num-wrap { background: var(--pink-bg); }
+  .s9 .stage-num { color: var(--pink); }
+  .s10 .num-wrap { background: var(--green-bg); }
+  .s10 .stage-num { color: var(--green); }
+  .s11 .num-wrap { background: var(--coral-bg); }
+  .s11 .stage-num { color: var(--coral); }
+
+  /* ── FOOTER ── */
+  .footer {
+    text-align: center;
+    padding: 32px 24px;
+    font-size: 12px;
+    color: var(--t3);
+    font-family: 'Space Mono', monospace;
+    border-top: 1px solid var(--border);
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 560px) {
+    .hero { padding: 40px 16px 32px; }
+    .content { padding: 0 16px 60px; }
+    .hero-stats { gap: 20px; }
+    .stage-head { padding: 14px 16px; gap: 12px; }
+    .stage-body-inner { padding: 0 16px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="eyebrow">Complete Learning Path</div>
+  <h1>Agentic AI<br><span>Engineer</span> Roadmap</h1>
+  <p>A structured path from Python fundamentals to building AI systems that build AI systems. Click any stage to expand.</p>
+  <div class="hero-stats">
+    <div class="stat"><span class="stat-num">11</span><span class="stat-label">Stages</span></div>
+    <div class="stat"><span class="stat-num">50+</span><span class="stat-label">Topics</span></div>
+    <div class="stat"><span class="stat-num">∞</span><span class="stat-label">Possibilities</span></div>
+  </div>
+</div>
+
+<div class="content">
+
+  <!-- 01 -->
+  <div class="stage s1" onclick="toggle(this)">
+    <div class="stage-head">
+      <div class="num-wrap"><span class="stage-num">01</span></div>
+      <div class="stage-info">
+        <div class="stage-title">Python Fundamentals</div>
+        <div class="stage-subtitle">Core syntax · OOP · UV · API handling</div>
+      </div>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="stage-body">
+      <div class="stage-body-inner">
+        <p class="stage-desc">Mastering the language is the foundation for clean and scalable AI applications.</p>
+        <div class="items">
+          <div class="item"><div class="item-title">Core Syntax</div><div class="item-desc">Variables, data types, functions, loops, and conditionals.</div></div>
+          <div class="item"><div class="item-title">OOP Concepts</div><div class="item-desc">Classes, objects, inheritance, and encapsulation.</div></div>
+          <div class="item"><div class="item-title">API Handling</div><div class="item-desc">HTTP requests, JSON parsing, and async/await for calling external AI services.</div></div>
+          <div class="item">
+            <div class="item-title">Project Structure & Dependency Management</div>
+            <div class="item-desc">Modules, packages, and professional code organization. Use <strong>UV</strong> for fast project and dependency management — replaces pip + virtualenv with a single blazing-fast tool. Learn <code>uv init</code>, <code>uv add</code>, <code>uv run</code>, and <code>pyproject.toml</code> based workflows.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 02 -->
+  <div class="stage s2" onclick="toggle(this)">
+    <div class="stage-head">
+      <div class="num-wrap"><span class="stage-num">02</span></div>
+      <div class="stage-info">
+        <div class="stage-title">LLM Fundamentals</div>
+        <div class="stage-subtitle">Tokens · context · prompting · structured outputs</div>
+      </div>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="stage-body">
+      <div class="stage-body-inner">
+        <p class="stage-desc">Understanding the mechanics of Large Language Models without necessarily training them.</p>
+        <div class="items">
+          <div class="item"><div class="item-title">Mechanics</div><div class="item-desc">Tokens, next-token prediction, temperature, and top-p.</div></div>
+          <div class="item"><div class="item-title">Context Management</div><div class="item-desc">Token limits, chunking strategies, and context windows.</div></div>
+          <div class="item"><div class="item-title">Prompting Techniques</div><div class="item-desc">Zero-shot, few-shot, Chain-of-Thought (CoT), and system prompts.</div></div>
+          <div class="item"><div class="item-title">Structured Outputs</div><div class="item-desc">JSON mode, function calling, and schema validation.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 03 -->
+  <div class="stage s3" onclick="toggle(this)">
+    <div class="stage-head">
+      <div class="num-wrap"><span class="stage-num">03</span></div>
+      <div class="stage-info">
+        <div class="stage-title">Learn a Framework</div>
+        <div class="stage-subtitle">LangChain · OpenAI Agents SDK · Google ADK</div>
+      </div>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="stage-body">
+      <div class="stage-body-inner">
+        <p class="stage-desc">Master one framework deeply rather than dabbling in many. Pick based on your goal — all three are production-ready.</p>
+        <div class="items">
+          <div class="item">
+            <div class="item-title">Recommended: LangChain + LangGraph</div>
+            <div class="item-desc">Industry standard with the largest ecosystem. Best choice if you want maximum community resources, integrations, and job market recognition. LangGraph adds stateful graph-based workflows on top of LangChain for production multi-step agents.</div>
+          </div>
+          <div class="item">
+            <div class="item-title">Alternative: OpenAI Agents SDK</div>
+            <div class="item-desc">Lightweight and purpose-built for agentic workflows. Excellent for learning agent primitives without heavy abstractions — agents, handoffs, tools, and guardrails in clean Python. Ideal if you want to understand how agents really work under the hood without a lot of framework magic getting in the way.</div>
+          </div>
+          <div class="item">
+            <div class="item-title">Alternative: Google ADK (Agent Development Kit)</div>
+            <div class="item-desc">Google's official framework for building multi-agent systems. Deeply integrated with the Gemini model family, Vertex AI, and Google Cloud infrastructure. Natively supports A2A protocol and agent-to-agent communication. Strong choice if you're building on GCP or want first-class support for agent interoperability out of the box.</div>
+          </div>
+        </div>
+        <div class="tip">
+          <div class="tip-label">Tip</div>
+          <div class="tip-text">Pick one and go deep. The concepts — tools, memory, state, routing — transfer across all three. You can always pick up the others quickly once you've mastered one.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 04 -->
+  <div class="stage s4" onclick="toggle(this)">
+    <div class="stage-head">
+      <div class="num-wrap"><span class="stage-num">04</span></div>
+      <div class="stage-info">
+        <div class="stage-title">Advanced Framework Concepts</div>
+        <div class="stage-subtitle">State · workflows · LCEL · graph architectures</div>
+      </div>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="stage-body">
+      <div class="stage-body-inner">
+        <p class="stage-desc">Moving from basic scripts to professional-grade architectures.</p>
+        <div class="items">
+          <div class="item"><div class="item-title">State Management</div><div class="item-desc">Tracking conversation history and workflow progress.</div></div>
+          <div class="item"><div class="item-title">Complex Workflows</div><div class="item-desc">Multi-step processes and conditional branching.</div></div>
+          <div class="item"><div class="item-title">LCEL (LangChain Expression Language)</div><div class="item-desc">Pipe operators, runnables, and streaming.</div></div>
+          <div class="item"><div class="item-title">Graph Architectures</div><div class="item-desc">Nodes, edges, and conditional routing for complex decision-making.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 -->
+  <div class="stage s5" onclick="toggle(this)">
+    <div class="stage-head">
+      <div class="num-wrap"><span class="stage-num">05</span></div>
+      <div class="stage-info">
+        <div class="stage-title">Memory Management</div>
+        <div class="stage-subtitle">Short-term · long-term · thread IDs · patterns</div>
+      </div>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="stage-body">
+      <div class="stage-body-inner">
+        <p class="stage-desc">Adding "state" to stateless LLMs so they can remember user preferences.</p>
+        <div class="items">
+          <div class="item"><div class="item-title">Short-term Memory</div><div class="item-desc">Session-based history (InMemorySaver/checkpointers).</div></div>
+          <div class="item"><div class="item-title">Long-term Memory</div><div class="item-desc">Persistent user preferences (InMemoryStore or databases).</div></div>
+          <div class="item"><div class="item-title">Thread IDs</div><div class="item-desc">Unique identifiers for multi-user application management.</div></div>
+          <div class="item"><div class="item-title">Memory Patterns</div><div class="item-desc">Buffer, summary, and entity extraction patterns.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06 -->
+  <div class="stage s6" onclick="toggle(this)">
+    <div class="stage-head">
+      <div class="num-wrap"><span class="stage-num">06</span></div>
+      <div class="stage-info">
+        <div class="stage-title">Tool Integration</div>
+        <div class="stage-subtitle">@tool decorator · schemas · APIs · tool selection</div>
+      </div>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="stage-body">
+      <div class="stage-body-inner">
+        <p class="stage-desc">Connecting AI to the real world — functions, APIs, and databases.</p>
+        <div class="items">
+          <div class="item"><div class="item-title">@tool Decorator</div><div class="item-desc">Converting Python functions into LLM-readable tools.</div></div>
+          <div class="item"><div class="item-title">Tool Schemas</div><div class="item-desc">Defining input/output expectations via docstrings and type hints.</div></div>
+          <div class="item"><div class="item-title">External APIs</div><div class="item-desc">Connecting to weather, search engines, or SQL databases.</div></div>
+          <div class="item"><div class="item-title">Tool Selection</div><div class="item-desc">How LLMs decide which tool to call based on the user's intent.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 07 -->
+  <div class="stage s7" onclick="toggle(this)">
+    <div class="stage-head">
+      <div class="num-wrap"><span class="stage-num">07</span></div>
+      <div class="stage-info">
+        <div class="stage-title">Agent Protocols & Interoperability</div>
+        <div class="stage-subtitle">MCP · A2A · AG-UI · agent skills</div>
+      </div>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="stage-body">
+      <div class="stage-body-inner">
+        <p class="stage-desc">The emerging standards that allow agents, tools, and AI systems to communicate and collaborate across boundaries.</p>
+        <div class="items">
+          <div class="item">
+            <div class="item-title">MCP — Model Context Protocol</div>
+            <div class="item-desc">Anthropic's open standard for connecting LLMs to external tools, data sources, and services. Learn to build MCP servers (exposing tools and resources) and MCP clients (consuming them). Understand how Claude Code, Cursor, and other AI tools use MCP under the hood. This is becoming the USB-C of AI tool integration.</div>
+          </div>
+          <div class="item">
+            <div class="item-title">A2A — Agent to Agent Protocol</div>
+            <div class="item-desc">Google's open protocol for agent-to-agent communication. Agents expose an Agent Card describing their capabilities, and other agents can discover and delegate tasks to them over HTTP. Learn how to build agents that act as both clients (calling other agents) and servers (being called by others).</div>
+          </div>
+          <div class="item">
+            <div class="item-title">AG-UI — Agent User Interaction Protocol</div>
+            <div class="item-desc">An open protocol that standardizes how AI agents connect to frontend applications. Defines a streaming event layer between agents and UIs — covering real-time state updates, tool call visibility, human-in-the-loop interactions, and shared state between agent and interface. The missing link between your backend agent and your frontend.</div>
+          </div>
+          <div class="item">
+            <div class="item-title">Agent Skills & Capability Declaration</div>
+            <div class="item-desc">How agents advertise what they can do — structured skill definitions, input/output schemas, and capability manifests. Understand how a Supervisor agent discovers and routes to the right Worker agent based on declared skills.</div>
+          </div>
+          <div class="item">
+            <div class="item-title">Protocol Composition</div>
+            <div class="item-desc">Real-world systems combine MCP + A2A + AG-UI together. MCP for tool/resource access, A2A for agent-to-agent delegation, AG-UI for frontend streaming. Learn to design systems where all three layers work in concert.</div>
+          </div>
+        </div>
+        <div class="tip">
+          <div class="tip-label">Why this matters</div>
+          <div class="tip-text">MCP, A2A, and AG-UI are rapidly becoming industry standards. Knowing these protocols means your agents can plug into any ecosystem — not just the one you built.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 08 -->
+  <div class="stage s8" onclick="toggle(this)">
+    <div class="stage-head">
+      <div class="num-wrap"><span class="stage-num">08</span></div>
+      <div class="stage-info">
+        <div class="stage-title">RAG Systems</div>
+        <div class="stage-subtitle">Vector stores · embeddings · retrieval strategies</div>
+      </div>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="stage-body">
+      <div class="stage-body-inner">
+        <p class="stage-desc">Connecting LLMs to custom knowledge bases — Retrieval Augmented Generation.</p>
+        <div class="items">
+          <div class="item"><div class="item-title">Vector Stores</div><div class="item-desc">Databases like Chroma, FAISS, or Pinecone.</div></div>
+          <div class="item"><div class="item-title">Embeddings</div><div class="item-desc">Converting text into vectors to find semantic similarity.</div></div>
+          <div class="item"><div class="item-title">Retrieval Strategies</div><div class="item-desc">Similarity search, MMR (Maximal Marginal Relevance), and hybrid search.</div></div>
+          <div class="item"><div class="item-title">Multi-file RAG</div><div class="item-desc">Processing PDFs, CSVs, and website data.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 09 -->
+  <div class="stage s9" onclick="toggle(this)">
+    <div class="stage-head">
+      <div class="num-wrap"><span class="stage-num">09</span></div>
+      <div class="stage-info">
+        <div class="stage-title">Agents & Multi-Agents</div>
+        <div class="stage-subtitle">ReAct · single agents · multi-agent systems</div>
+      </div>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="stage-body">
+      <div class="stage-body-inner">
+        <p class="stage-desc">Building autonomous systems that can reason and act.</p>
+        <div class="items">
+          <div class="item"><div class="item-title">ReAct Pattern</div><div class="item-desc">The "Reason → Act → Observe → Repeat" loop.</div></div>
+          <div class="item"><div class="item-title">Single Agents</div><div class="item-desc">One LLM using tools for focused tasks (research/analysis).</div></div>
+          <div class="item"><div class="item-title">Multi-Agent Systems</div><div class="item-desc">Collaborative patterns like Supervisor, Worker, and Critic.</div></div>
+          <div class="item"><div class="item-title">Decision Logic</div><div class="item-desc">Knowing when to use an autonomous agent versus a fixed chain.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 10 -->
+  <div class="stage s10" onclick="toggle(this)">
+    <div class="stage-head">
+      <div class="num-wrap"><span class="stage-num">10</span></div>
+      <div class="stage-info">
+        <div class="stage-title">Build Real-World Projects</div>
+        <div class="stage-subtitle">FastAPI · Chainlit · AG-UI · deployment · databases</div>
+      </div>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="stage-body">
+      <div class="stage-body-inner">
+        <p class="stage-desc">Integrating everything into a production-ready application.</p>
+        <div class="items">
+          <div class="item"><div class="item-title">Backend</div><div class="item-desc">FastAPI for building REST APIs to serve your agents.</div></div>
+          <div class="item">
+            <div class="item-title">Frontend & UI</div>
+            <div class="item-desc">
+              <strong>Chainlit</strong> — purpose-built conversational AI UI with streaming, chat history, and auth out of the box. Best for deploying chatbot and agent UIs fast.<br>
+              <strong>AG-UI + Chatkit</strong> — use the AG-UI protocol with Chatkit's React components to build custom frontends that are fully wired to your agent's real-time state, tool calls, and streaming output.<br>
+              <strong>HTML/CSS/JS</strong> — for fully custom UIs when you need complete control.
+            </div>
+          </div>
+          <div class="item"><div class="item-title">Deployment</div><div class="item-desc">Docker for containerization and AWS/GCP for hosting.</div></div>
+          <div class="item"><div class="item-title">Databases</div><div class="item-desc">PostgreSQL (data), Redis (caching), and Vector DBs (RAG).</div></div>
+        </div>
+        <div class="tip">
+          <div class="tip-label">Pro tip from the author</div>
+          <div class="tip-text">Build 2–3 end-to-end deployed projects. Recruiters value a live application much more than a collection of tutorial scripts.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 11 -->
+  <div class="stage s11" onclick="toggle(this)">
+    <div class="stage-head">
+      <div class="num-wrap"><span class="stage-num">11</span></div>
+      <div class="stage-info">
+        <div class="stage-title">AI-Assisted Engineering & Context Engineering</div>
+        <div class="stage-subtitle">Claude Code · context engineering · agents that build agents</div>
+      </div>
+      <span class="arrow">▶</span>
+    </div>
+    <div class="stage-body">
+      <div class="stage-body-inner">
+        <p class="stage-desc">The meta-skill. After mastering the fundamentals, learn to harness AI tools so that agents build your agents.</p>
+        <div class="items">
+          <div class="item"><div class="item-title">AI Developer Tools</div><div class="item-desc">Get deeply familiar with tools like Claude Code, Cursor, Windsurf, and GitHub Copilot. These are not just autocomplete — they are agentic coding assistants that can plan, refactor, and write entire systems. Learn their capabilities and limitations.</div></div>
+          <div class="item"><div class="item-title">Context Engineering</div><div class="item-desc">The art of structuring prompts, system instructions, memory, tools, and conversation context so AI does the heavy lifting correctly. This is the senior skill — writing less code yourself and instead managing what context the AI receives to produce production-quality output reliably.</div></div>
+          <div class="item"><div class="item-title">AI Workflow Design</div><div class="item-desc">Decompose large engineering tasks into AI-delegatable subtasks. Use specs, CLAUDE.md files, structured plans, and feedback loops to guide AI tools through complex multi-file projects. Your role shifts from writing code to reviewing, directing, and improving.</div></div>
+          <div class="item"><div class="item-title">Agents That Build Agents</div><div class="item-desc">Combine everything: use AI coding tools guided by your context engineering skills to scaffold, build, and iterate on your own agentic systems. You become the architect and manager — the AI becomes your engineering team.</div></div>
+        </div>
+        <div class="tip">
+          <div class="tip-label">The big insight</div>
+          <div class="tip-text">The best Agentic AI Engineers don't just write agents — they know how to use agents to write agents. Context Engineering is the highest-leverage skill in the stack. Master it and your output multiplies 10x.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="final-callout">
+    <h3>Your trajectory</h3>
+    <p>Stages 1–3 are your foundation. Stages 4–7 are your craft. Stages 8–10 are your portfolio. Stage 11 is your superpower. Depth beats breadth at every stage of this journey.</p>
+  </div>
+
+</div>
+
+<div class="footer">
+  Agentic AI Engineer Roadmap &nbsp;·&nbsp; 11 Stages &nbsp;·&nbsp; Built for the next generation of AI engineers
+</div>
+
+<script>
+  function toggle(el) {
+    const body = el.querySelector('.stage-body');
+    const isOpen = el.classList.contains('open');
+    el.classList.toggle('open');
+    if (!isOpen) {
+      body.style.maxHeight = body.scrollHeight + 'px';
+    } else {
+      body.style.maxHeight = '0';
+    }
+  }
+</script>
+
+</body>
+</html>
