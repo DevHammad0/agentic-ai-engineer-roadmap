@@ -32,7 +32,7 @@ Each stage is interactive — click to expand, read, and copy the full roadmap a
 | 07 | Agent Protocols & Interoperability (MCP · A2A · AG-UI) |
 | 08 | RAG Systems |
 | 09 | Agents & Multi-Agents |
-| 10 | Build Real-World Projects (FastAPI · Chainlit · AG-UI · Docker · Databases) |
+| 10 | Build Real-World Projects (FastAPI · Chainlit · chatkit · AG-UI · Docker · Databases) |
 | 11 | AI-Assisted Engineering & Context Engineering |
 
 ## Tech
