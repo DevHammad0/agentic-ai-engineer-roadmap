@@ -11,7 +11,10 @@
 
 </div>
 
----
+<br/>
+
+[![Preview](preview.png)](https://devhammad0.github.io/agentic-ai-engineer-roadmap/)
+
 
 ## Overview
 
