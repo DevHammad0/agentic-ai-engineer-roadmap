@@ -398,10 +398,23 @@
   <div class="eyebrow">Complete Learning Path</div>
   <h1>Agentic AI<br><span>Engineer</span> Roadmap</h1>
   <p>A structured path from Python fundamentals to building AI systems that build AI systems. Click any stage to expand.</p>
-  <div class="hero-stats">
-    <div class="stat"><span class="stat-num">11</span><span class="stat-label">Stages</span></div>
-    <div class="stat"><span class="stat-num">50+</span><span class="stat-label">Topics</span></div>
-    <div class="stat"><span class="stat-num">∞</span><span class="stat-label">Possibilities</span></div>
+  <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;">
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">11</span><span class="stat-label">Stages</span></div>
+      <div class="stat"><span class="stat-num">50+</span><span class="stat-label">Topics</span></div>
+      <div class="stat"><span class="stat-num">∞</span><span class="stat-label">Possibilities</span></div>
+    </div>
+    <button onclick="copyMarkdown()" id="copyBtn" title="Copy roadmap as Markdown" style="
+      width:44px;height:44px;border-radius:12px;border:1px solid rgba(124,110,240,0.35);
+      background:var(--accent-bg);color:var(--accent2);cursor:pointer;
+      display:flex;align-items:center;justify-content:center;
+      transition:background 0.2s,border-color 0.2s,transform 0.15s;flex-shrink:0;
+    " onmouseover="this.style.background='rgba(124,110,240,0.22)';this.style.transform='scale(1.08)'"
+       onmouseout="this.style.background='var(--accent-bg)';this.style.transform='scale(1)'">
+      <svg id="copyIcon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+      </svg>
+    </button>
   </div>
 </div>
 
@@ -718,10 +731,204 @@
 </div>
 
 <div class="footer">
-  Agentic AI Engineer Roadmap &nbsp;·&nbsp; 11 Stages &nbsp;·&nbsp; Built for the next generation of AI engineers
+  Agentic AI Engineer Roadmap &nbsp;·&nbsp; 11 Stages &nbsp;·&nbsp;
+  <a href="https://github.com/devhammad0" target="_blank" style="color:var(--accent2);text-decoration:none;">github.com/devhammad0</a>
+
 </div>
 
 <script>
+  const MARKDOWN = `# Agentic AI Engineer Roadmap
+> A structured path from Python fundamentals to building AI systems that build AI systems.
+> GitHub: https://github.com/devhammad0
+
+---
+
+## 01 — Python Fundamentals
+*Core syntax · OOP · UV · API handling*
+
+Master the language as the foundation for clean and scalable AI applications.
+
+- **Core Syntax** — Variables, data types, functions, loops, and conditionals.
+- **OOP Concepts** — Classes, objects, inheritance, and encapsulation.
+- **API Handling** — HTTP requests, JSON parsing, and async/await for calling external AI services.
+- **Project Structure & Dependency Management** — Modules, packages, and professional code organization. Use **UV** for fast project and dependency management — replaces pip + virtualenv with a single blazing-fast tool. Learn \`uv init\`, \`uv add\`, \`uv run\`, and \`pyproject.toml\` based workflows.
+
+---
+
+## 02 — LLM Fundamentals
+*Tokens · context · prompting · structured outputs*
+
+Understanding the mechanics of Large Language Models without necessarily training them.
+
+- **Mechanics** — Tokens, next-token prediction, temperature, and top-p.
+- **Context Management** — Token limits, chunking strategies, and context windows.
+- **Prompting Techniques** — Zero-shot, few-shot, Chain-of-Thought (CoT), and system prompts.
+- **Structured Outputs** — JSON mode, function calling, and schema validation.
+
+---
+
+## 03 — Learn a Framework
+*LangChain · OpenAI Agents SDK · Google ADK*
+
+Master one framework deeply rather than dabbling in many.
+
+- **Recommended: LangChain + LangGraph** — Industry standard with the largest ecosystem. Best choice if you want maximum community resources, integrations, and job market recognition. LangGraph adds stateful graph-based workflows on top of LangChain for production multi-step agents.
+- **Alternative: OpenAI Agents SDK** — Lightweight and purpose-built for agentic workflows. Excellent for learning agent primitives without heavy abstractions — agents, handoffs, tools, and guardrails in clean Python.
+- **Alternative: Google ADK** — Google's official framework for building multi-agent systems. Deeply integrated with the Gemini model family, Vertex AI, and Google Cloud infrastructure. Natively supports A2A protocol and agent-to-agent communication.
+
+> **Tip:** Pick one and go deep. The concepts — tools, memory, state, routing — transfer across all three.
+
+---
+
+## 04 — Advanced Framework Concepts
+*State · workflows · LCEL · graph architectures*
+
+Moving from basic scripts to professional-grade architectures.
+
+- **State Management** — Tracking conversation history and workflow progress.
+- **Complex Workflows** — Multi-step processes and conditional branching.
+- **LCEL (LangChain Expression Language)** — Pipe operators, runnables, and streaming.
+- **Graph Architectures** — Nodes, edges, and conditional routing for complex decision-making.
+
+---
+
+## 05 — Memory Management
+*Short-term · long-term · thread IDs · patterns*
+
+Adding "state" to stateless LLMs so they can remember user preferences.
+
+- **Short-term Memory** — Session-based history (InMemorySaver/checkpointers).
+- **Long-term Memory** — Persistent user preferences (InMemoryStore or databases).
+- **Thread IDs** — Unique identifiers for multi-user application management.
+- **Memory Patterns** — Buffer, summary, and entity extraction patterns.
+
+---
+
+## 06 — Tool Integration
+*@tool decorator · schemas · APIs · tool selection*
+
+Connecting AI to the real world — functions, APIs, and databases.
+
+- **@tool Decorator** — Converting Python functions into LLM-readable tools.
+- **Tool Schemas** — Defining input/output expectations via docstrings and type hints.
+- **External APIs** — Connecting to weather, search engines, or SQL databases.
+- **Tool Selection** — How LLMs decide which tool to call based on the user's intent.
+
+---
+
+## 07 — Agent Protocols & Interoperability
+*MCP · A2A · AG-UI · agent skills*
+
+The emerging standards that allow agents, tools, and AI systems to communicate and collaborate across boundaries.
+
+- **MCP — Model Context Protocol** — Anthropic's open standard for connecting LLMs to external tools, data sources, and services. Learn to build MCP servers (exposing tools and resources) and MCP clients (consuming them). This is becoming the USB-C of AI tool integration.
+- **A2A — Agent to Agent Protocol** — Google's open protocol for agent-to-agent communication. Agents expose an Agent Card describing their capabilities, and other agents can discover and delegate tasks to them over HTTP.
+- **AG-UI — Agent User Interaction Protocol** — An open protocol that standardizes how AI agents connect to frontend applications. Defines a streaming event layer between agents and UIs — covering real-time state updates, tool call visibility, human-in-the-loop interactions, and shared state.
+- **Agent Skills & Capability Declaration** — How agents advertise what they can do — structured skill definitions, input/output schemas, and capability manifests.
+- **Protocol Composition** — Real-world systems combine MCP + A2A + AG-UI together.
+
+> **Why this matters:** MCP, A2A, and AG-UI are rapidly becoming industry standards. Knowing these protocols means your agents can plug into any ecosystem.
+
+---
+
+## 08 — RAG Systems
+*Vector stores · embeddings · retrieval strategies*
+
+Connecting LLMs to custom knowledge bases — Retrieval Augmented Generation.
+
+- **Vector Stores** — Databases like Chroma, FAISS, or Pinecone.
+- **Embeddings** — Converting text into vectors to find semantic similarity.
+- **Retrieval Strategies** — Similarity search, MMR (Maximal Marginal Relevance), and hybrid search.
+- **Multi-file RAG** — Processing PDFs, CSVs, and website data.
+
+---
+
+## 09 — Agents & Multi-Agents
+*ReAct · single agents · multi-agent systems*
+
+Building autonomous systems that can reason and act.
+
+- **ReAct Pattern** — The "Reason → Act → Observe → Repeat" loop.
+- **Single Agents** — One LLM using tools for focused tasks (research/analysis).
+- **Multi-Agent Systems** — Collaborative patterns like Supervisor, Worker, and Critic.
+- **Decision Logic** — Knowing when to use an autonomous agent versus a fixed chain.
+
+---
+
+## 10 — Build Real-World Projects
+*FastAPI · Chainlit · AG-UI · deployment · databases*
+
+Integrating everything into a production-ready application.
+
+- **Backend** — FastAPI for building REST APIs to serve your agents.
+- **Frontend & UI** — Chainlit for conversational AI UIs; AG-UI + Chatkit for custom frontends wired to your agent's real-time state; HTML/CSS/JS for full control.
+- **Deployment** — Docker for containerization and AWS/GCP for hosting.
+- **Databases** — PostgreSQL (data), Redis (caching), and Vector DBs (RAG).
+
+> **Pro tip:** Build 2–3 end-to-end deployed projects. Recruiters value a live application much more than a collection of tutorial scripts.
+
+---
+
+## 11 — AI-Assisted Engineering & Context Engineering
+*Claude Code · context engineering · agents that build agents*
+
+The meta-skill. After mastering the fundamentals, learn to harness AI tools so that agents build your agents.
+
+- **AI Developer Tools** — Get deeply familiar with Claude Code, Cursor, Windsurf, and GitHub Copilot. These are agentic coding assistants that can plan, refactor, and write entire systems.
+- **Context Engineering** — The art of structuring prompts, system instructions, memory, tools, and conversation context so AI does the heavy lifting correctly. This is the senior skill.
+- **AI Workflow Design** — Decompose large engineering tasks into AI-delegatable subtasks. Use specs, CLAUDE.md files, structured plans, and feedback loops to guide AI tools through complex multi-file projects.
+- **Agents That Build Agents** — Combine everything: use AI coding tools guided by your context engineering skills to scaffold, build, and iterate on your own agentic systems.
+
+> **The big insight:** The best Agentic AI Engineers don't just write agents — they know how to use agents to write agents. Context Engineering is the highest-leverage skill in the stack.
+
+---
+
+## Your Trajectory
+
+Stages 1–3 are your foundation. Stages 4–7 are your craft. Stages 8–10 are your portfolio. Stage 11 is your superpower. Depth beats breadth at every stage of this journey.
+
+---
+
+*Agentic AI Engineer Roadmap · 11 Stages · github.com/devhammad0*
+`;
+
+  function copyMarkdown() {
+    const btn = document.getElementById('copyBtn');
+    const icon = document.getElementById('copyIcon');
+
+    const showTick = () => {
+      icon.innerHTML = `<polyline points="20 6 9 17 4 12" fill="none" stroke="var(--green)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>`;
+      btn.style.borderColor = 'rgba(62,207,142,0.4)';
+      btn.style.background = 'rgba(62,207,142,0.1)';
+      btn.style.color = 'var(--green)';
+      setTimeout(() => {
+        icon.innerHTML = `<rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>`;
+        btn.style.borderColor = 'rgba(124,110,240,0.35)';
+        btn.style.background = 'var(--accent-bg)';
+        btn.style.color = 'var(--accent2)';
+      }, 2500);
+    };
+
+    // Try modern clipboard API first, fall back to execCommand
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(MARKDOWN).then(showTick).catch(() => {
+        fallbackCopy();
+      });
+    } else {
+      fallbackCopy();
+    }
+
+    function fallbackCopy() {
+      const ta = document.createElement('textarea');
+      ta.value = MARKDOWN;
+      ta.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0';
+      document.body.appendChild(ta);
+      ta.focus(); ta.select();
+      try { document.execCommand('copy'); showTick(); } catch(e) {}
+      document.body.removeChild(ta);
+    }
+  }
+
   function toggle(el) {
     const body = el.querySelector('.stage-body');
     const isOpen = el.classList.contains('open');
